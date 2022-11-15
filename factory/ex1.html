@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="ex1.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="list1" ng-controller="showCtrl as list1">
+            <p>Welcome</p>
+            <ol>
+                <li ng-repeat="item in list1.items">
+                  {{ item.name }}
+                </li>
+              </ol>
+    </div>
+</body>
+</html>

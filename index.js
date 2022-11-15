@@ -73,7 +73,8 @@ app.post("/show", function (req, res) {
         memList.push(mem);
       }
       console.log(memList);
-      res.render("show.pug", { memList: memList });
+      res.send(result);
+      //res.render("show.pug", { memList: memList });
     });
   });
 });
