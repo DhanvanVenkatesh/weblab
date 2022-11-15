@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.js"></script>
+<style>
+    p {
+        width: 425px;
+        height: 30px;
+        background: blue;
+    }
+    .red-bar {
+        background: red;
+    }
+    .red-bar.ng-enter {
+        transition:all ease-in 0.25s;
+        height: 0px;
+    }
+    .red-bar.ng-enter.ng-enter-active {
+        height: 30px;
+    }
+
+</style>
+</head>
+<body ng-app="app">
+     <button ng-click="showRed=true">Show Red Bars</button>
+     <button ng-click="showRed=false">Hide Red Bars</button>
+     <p ng-if="showRed" class="red-bar">A</p>
+     <p>b</p>
+     <p ng-if="showRed" class="red-bar">c</p>
+     <p></p>
+     <p ng-if="showRed" class="red-bar">d</p>
+     <p></p>
+     <p ng-if="showRed" class="red-bar"></p>
+     <p></p>
+     <script>
+     angular.module('app', ['ngAnimate']);
+     </script>
+    </body>
+    
+</html>

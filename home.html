@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h2>Form</h2>
+    <div ng-app="myApp">
+        <form ng-controller="myCtrl" name="myForm" novalidate action="http://localhost:3000/add" method="post">
+            <p>Name <br>
+                <input type="text" name="name" ng-model="name" required>
+                <span style="color: red;" ng-show="myForm.name.$dirty && myForm.name.$invalid">
+                    <span ng-show="myForm.name.$error.required">Name is required</span>
+                </span>
+            </p>
+
+            <input type="submit">
+        </form>
+    </div>
+
+    <script>
+        var app = angular.module('myApp',[]);
+        app.controller('myCtrl',function($scope){
+            $scope.name='Dhanvan'
+        })
+    </script>
+</body>
+</html>

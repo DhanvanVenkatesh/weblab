@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Website Layout
+        </title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+            
+            .columnA{
+                float: left;
+                width: 75%;
+                height: 500px;
+                padding: 15px;
+                text-align:justify;
+                border: 1px solid black;
+            }
+
+            .columnB, .columnC {
+                float: left;
+                width: 25%;
+                height: 250px;
+                padding: 15px;
+                text-align:justify;
+                border: 1px solid black;
+            }
+
+            .column1, .column2{
+                float: left;
+                width: 50%;
+                height: 100px;
+                padding: 15px;
+                text-align:justify;
+                background-color: aqua;
+                border: 1px solid black;
+            }
+
+            .colfull{
+                float: left;
+                width: 100%;
+                height: 100px;
+                padding: 15px;
+                text-align:justify;
+                background-color: aqua;
+                border: 1px solid black;
+            }
+            h2 {
+                color:green;
+                text-align:center;
+            }
+             
+            /* Media query to set website layout
+            according to screen size */
+            @media screen and (max-width:600px) {
+                .columnA, .columnB, .columnC {
+                    width: 50%;
+                }
+            }
+            @media screen and (max-width:400px) {
+                .columnA, .columnB, .columnC {
+                    width: 100%;
+                }
+            }
+        </style>
+    </head>
+     
+    <body>
+        <div class = "row">
+            <div class = "column1">
+            <h2 style = "color:black;font-size:200%;">
+                GeeksforGeeks
+            </h2>
+            </div>
+            <div class = "column2">
+                <h2 style = "color:black;font-size:200%;">
+                    GeeksforGeeks
+                </h2>
+                </div>
+        </div>
+
+        <div class = "row">
+            <div class = "colfull">
+            <h2 style = "color:black;font-size:200%;">
+                Hello
+            </h2>
+            </div>
+        </div>
+         
+        <div class = "row">
+            <div class = "columnA">
+                <h2>Column A</h2>
+                <p>Nai</p>
+            </div>
+            <div class = "columnB">
+                <h2>Column B</h2>
+                <p>Bye</p>
+            </div>
+            <div class = "columnC">
+                <h2>Column C</h2> 
+                <p>Hi</p>
+            </div>
+        </div>
+    </body>
+</html>     
