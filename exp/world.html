@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Web</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="myapp">
+        <form ng-controller="valctrl" name="form" novalidate action="http://localhost:3000/form" method="POST">
+            <p>Date:{{date | date}}</p>
+            <p>Name<br>
+                <input type="text" name="name" ng-model="name" required ng-minlength="3">
+                <span style="color: red;" ng-show="form.name.$dirty && form.name.$invalid">
+                <span ng-show="form.name.$error.required">Enter name</span>
+                <span ng-show="form.name.$error.minlength">name is too short</span>
+                </span>
+            </p>
+            
+
+            <input type="submit">
+
+            <a href="view.html">Display</a>
+
+            <p>for further clarification access the url: </p>
+                {{abcd}}
+        </form>
+    </div>
+    <script>
+        var app = angular.module('myapp',[]);
+        app.controller('valctrl',function($scope,$location){
+            $scope.name = 'prithvi';
+            $scope.date = new Date();
+            $scope.abcd = $location.absUrl()
+        })
+    </script>
+    
+</body>
+</html>
