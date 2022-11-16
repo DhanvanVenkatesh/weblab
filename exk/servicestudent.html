@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    </head>
+    <style>
+        table, th, td {
+          border:1px solid black;
+        }
+        </style>
+    <body ng-app="serviceapp">
+        <div ng-controller="ctrl">
+            <h4>STUDENT FORM</h4>
+            <form ng-controller="ctrl" name="form" method="POST" novalidate action="http://localhost:3000/form">
+                <label>First name:</label>
+                <input type="text" name="fname" ng-model="fname" placeholder="firstname" required>
+                <span style="color:red" ng-show="form.fname.$dirty && form.fname.$invalid">
+                <span ng-show="form.fname.$error.required">enter fname</span>
+                </span><br>
+                <label>Last name:</label>
+                <input type="text" name="lname" ng-model="lname" placeholder="lastname" required>
+                <span style="color:red" ng-show="form.lname.$dirty && form.lname.$invalid">
+                    <span ng-show="form.lname.$error.required">enter lname</span>
+                </span><br>
+                <label>Age:</label>
+                <input type="text" name="age" ng-model ="age" placeholder="age" required>
+                <span style="color:red" ng-show="form.age.$dirty && form.age.$invalid">
+                    <span ng-show="form.age.$error.required">enter age</span>
+                </span><br>
+                <label>seat:</label>
+                <input type="number" ng-model="seat" placeholder="enter seat">
+
+                <button ng-click="serviceaddition()">get service amt</button><br>
+                <p>amt is{{sresult}}</p>
+                <!-- <button ng-click = "factoryadd()">get factory amt</button>
+                <p>amt is{{fresult}}</p>  -->
+                <input type  = "submit" value="submit"  ng-disabled="form.fname.$dirty && form.fname.$invalid" ><br>
+                {{fk |date}}
+            </form><br>
+            <table>
+                <tr>
+                    <th>firstname</th>
+                    <th>lastname</th>
+                    <th>age</th>
+                    
+                </tr>
+                <tr ng-repeat="item in details | filter:search">
+                    <td>{{item.fname}}</td>
+                    <td>{{item.lname}}</td>
+                    <td>{{item.age}}</td>
+                    
+
+                </tr>
+            </table>
+            <form name = "form1" novalidate action="http://localhost:3000/form1" method="POST">
+                <input type="submit" value="table" >
+            </form>
+        </div>
+        <script>
+            var app = angular.module("serviceapp",[]);
+            app.controller("ctrl",function($scope,$http,addition){
+                $scope.fname='';
+                $scope.lname='';
+                $scope.age='';
+            $http.get("http://localhost:3000/form1").then(function(response) {
+                $scope.details = response.data;
+                console.log(response.data);
+            });
+            $scope.fk= new Date();
+                $scope.serviceaddition=function(){
+                    var c = $scope.seat;
+                    $scope.sresult = addition.add(c);
+                }
+            })
+            // ctrl$inject=["additionfactory"];
+            // app.controller("ctrl",function($scope,$http,addtionfactory){
+            //     $scope.fname=''; factory
+            //     $scope.lname='';
+            //     $scope.age='';
+            // $http.get("http://localhost:3000/form1").then(function(response) {
+            //     $scope.details = response.data;
+            //     console.log(response.data);
+            // });
+            // $scope.fk= new Date();
+            //     $scope.factoryadd = function(){
+            //         var c = $scope.seat;
+            //         $scope.fresult=additionfactory.add(c);
+            //     }
+            // })
+            app.service("addition",function(){
+                this.add = function(x){
+                    return x*10;
+                }
+            })
+            app.factory("additionfactory",function(){
+                this.random={}
+                this.add = function(x){
+
+                    return x*10;
+                }
+                return random
+            })
+            
+        </script>
+    </body>
+    
+</html>
