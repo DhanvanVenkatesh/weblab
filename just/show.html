@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <title>Show</title>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+            
+        <form name="myForm" novalidate action="http://localhost:3000/showing" method="get">
+        </form>
+
+        <form name="myForm1" novalidate action="http://localhost:3000/show1" method="post">
+            <select name="val">
+                <option ng-repeat="x in myData" value="{{x.name}}">{{x.name}}</option>
+            </select>
+            <button>Submit</button>
+        </form>
+    </div>
+
+    <script>
+        var app = angular.module("myApp",[]);
+        app.controller("myCtrl",function($scope,$http){
+            $http.get("http://localhost:3000/showing").then(function(response){
+                $scope.myData = response.data;
+            })
+        })
+    </script>
+</body>
+</html>
